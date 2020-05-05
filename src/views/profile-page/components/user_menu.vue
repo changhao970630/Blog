@@ -1,12 +1,12 @@
 <template>
   <div id="user_menu">
-    <router-link :to="{name:'user_home'}" tag="div" id="user-menu-item" des="主页">
+    <router-link :to="{name:'user_home'}" tag="div" id="user-menu-item" des="Hmi">
       <i class="el-icon-menu"></i>
     </router-link>
-    <router-link :to="{name:'user_blog'}" tag="div" id="user-menu-item" des="博客">
+    <router-link :to="{name:'user_blog'}" tag="div" id="user-menu-item" des="Blog">
       <i class="el-icon-s-order"></i>
     </router-link>
-    <router-link :to="{name:'user_photo'}" tag="div" id="user-menu-item" des="相册">
+    <router-link :to="{name:'user_photo'}" tag="div" id="user-menu-item" des="Ablum">
       <i class="el-icon-picture"></i>
     </router-link>
   </div>

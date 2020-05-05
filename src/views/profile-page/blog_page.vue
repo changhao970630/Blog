@@ -1,6 +1,6 @@
 <template>
   <div>
-    <content-card :data="data"></content-card>
+    <content-card :data="data" :pagination="pagination" @changPage="changPage"></content-card>
   </div>
 </template>
 
@@ -9,14 +9,21 @@ export default {
   name: "blog-page",
   data() {
     return {
-      data: []
+      data: [],
+      pagination: {}
     };
   },
   methods: {
-    async getUserBlogs() {
-      const bgRes = await this.rq.fetchGet(this.apiUrl.essay, {});
+    async getUserBlogs(page = 1) {
+      const bgRes = await this.rq.fetchGet(this.apiUrl.essay, { page });
       console.log(bgRes);
       this.data = bgRes.data;
+      this.pagination = bgRes.meta.pagination;
+    },
+    changPage(val) {
+      console.log(val);
+
+      this.getUserBlogs(val);
     }
   },
   created() {

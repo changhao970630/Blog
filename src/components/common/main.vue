@@ -76,15 +76,15 @@ export default {
 #container {
   width: 100%;
   height: 100%;
+  // background-image: url("https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=108969226,324366578&fm=26&gp=0.jpg");
+  // box-sizing: 100% 100%;
   /*background-color: rgb(72, 109, 255);*/
   //   background-color: rgb(115, 145, 202);
   display: flex;
   justify-content: center;
 
   #middle {
-    background-color: rgb(255, 255, 255);
     width: 80%;
-    margin-bottom: 3rem;
     overflow-y: scroll;
   }
 

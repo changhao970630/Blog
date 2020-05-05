@@ -1,10 +1,7 @@
 <template>
   <div id="home">
     <div id="wrap">
-      <content-card :data="data"></content-card>
-      <div style="position: fixed;bottom: 0;height: 3rem">
-        <pagination :pagination="pagination" @changPage="changPage"></pagination>
-      </div>
+      <content-card :data="data" :pagination="pagination" @changPage="changPage"></content-card>
     </div>
   </div>
 </template>
@@ -41,6 +38,5 @@ export default {
 #home {
   width: 100%;
   height: 100%;
-  position: relative;
 }
 </style>
