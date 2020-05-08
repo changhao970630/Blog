@@ -29,7 +29,12 @@
           </el-col>
           <el-col>
             <el-form-item label="正文">
-              <mavon-editor :toolbars="toolbars" @change="contentInput" v-model="temporary_value" />
+              <mavon-editor
+                :toolbars="toolbars"
+                @change="contentInput"
+                @imgAdd="imgAdd"
+                v-model="temporary_value"
+              />
             </el-form-item>
           </el-col>
           <el-col>
@@ -44,6 +49,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "newEassy",
   data() {
@@ -123,6 +129,41 @@ export default {
       if (newEssayRes.id) {
         this.$message.success("文章创建成功！");
       }
+    },
+    getBlobBydataURI(urlData) {
+      const bytes = window.atob(urlData.split(",")[1]); //去掉url的头，并转换为byte
+
+      //处理异常,将ascii码小于0的转换为大于0
+      const ab = new ArrayBuffer(bytes.length);
+      const ia = new Uint8Array(ab);
+      for (let i = 0; i < bytes.length; i++) {
+        ia[i] = bytes.charCodeAt(i);
+      }
+      return new Blob([ab], { type: "image/png" });
+    },
+    async imgAdd(pos, file) {
+      // console.log(pos);
+      // let form = new FormData();
+      // const blobData = this.getBlobBydataURI(file.miniurl);
+      // let fileOfBlob = new File([blobData], file.name + ".jpg"); // 重命名了
+      // console.log(fileOfBlob);
+      // form.append("file", fileOfBlob);
+      // const d = await this.rq.fetchUpload(this.apiUrl.imageFile, {
+      //   file: form
+      // });
+      // console.log(d);
+      let formdata = new FormData();
+      formdata.append("imgFile", file);
+      axios({
+        method: "post",
+        url: this.apiUrl.imageFile,
+        data: {
+          file: formdata
+        },
+        timeout: 10000
+      }).then(response => {
+        console.log(response);
+      });
     }
   },
   created() {

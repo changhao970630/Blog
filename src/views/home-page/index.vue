@@ -17,9 +17,10 @@ export default {
     };
   },
   methods: {
-    async getPublicEssaies(page = 1) {
+    async getPublicEssaies(page = 1, status = 1) {
       const publicEssaies = await this.rq.fetchGet(this.apiUrl.public_essaies, {
-        page
+        page,
+        status
       });
       this.data = publicEssaies.data;
       this.pagination = publicEssaies.meta.pagination;

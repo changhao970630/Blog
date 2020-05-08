@@ -1,8 +1,17 @@
 <template>
   <div style="padding:10px">
+    <!-- <el-button type="text">
+      <h4>A</h4>
+    </el-button>
+    <el-button type="text">
+      <h2>A</h2>
+    </el-button>
+    <el-button type="text">
+      <h1>A</h1>
+    </el-button>
     <h2 v-html="data.title"></h2>
-    <div></div>
-    <article class="markdown-body" style="text-align:left" v-html="data.content"></article>
+    <div></div>-->
+    <article class="markdown-body" v-html="data.content" v-highlight></article>
   </div>
 </template>
 
@@ -31,5 +40,11 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang='less' scoped>
+.markdown-body {
+  font-size: 1.1rem;
+  .xquery {
+    background-color: darkcyan !important;
+  }
+}
 </style>

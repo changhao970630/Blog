@@ -5,7 +5,6 @@ import { getToken } from "../tools/common";
 import { Message } from "element-ui";
 Vue.use(VueRouter);
 const router = new VueRouter({
-  mode: "history",
   base: process.env.BASE_URL,
   routes,
 });
@@ -18,7 +17,8 @@ router.beforeEach((to, form, next) => {
     to.name == "home" ||
     to.name == "about" ||
     to.name == "contact" ||
-    to.name == "login"
+    to.name == "login" ||
+    to.name == "details"
   ) {
     document.title = to.meta.title ? to.meta.title : "404";
     next();

@@ -1,10 +1,19 @@
 <template>
-  <div id="modalMenu"></div>
+  <div id="modalMenu">
+    <el-button @click="recently">最近文章</el-button>
+  </div>
 </template>
 
 <script>
+import bus from "../../tools/bus";
 export default {
-  name: "modalMenu"
+  name: "modalMenu",
+  methods: {
+    recently() {
+      bus.$emit("toogleMenuEmit", false);
+      this.$router.push({ name: "about" });
+    }
+  }
 };
 </script>
 

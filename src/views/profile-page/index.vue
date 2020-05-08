@@ -9,6 +9,7 @@
         <h3 id="nickname">{{userInfo.nickname}}</h3>
         <h4 id="email">{{userInfo.email}}</h4>
         <h6>享受生活，珍惜时间！</h6>
+        <tags></tags>
         <div id="time">{{current_time}}</div>
       </div>
       <div id="user-content">
@@ -28,6 +29,7 @@
 </template>
 
 <script>
+import tags from "./components/tags";
 import user_menu from "./components/user_menu";
 export default {
   name: "user-profile",
@@ -37,7 +39,8 @@ export default {
     };
   },
   components: {
-    user_menu
+    user_menu,
+    tags
   },
   computed: {
     userInfo() {

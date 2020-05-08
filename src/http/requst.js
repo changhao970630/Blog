@@ -61,4 +61,19 @@ export default class rq {
         });
     });
   }
+  static fetchUpload(url, data) {
+    return new Promise((reslove, reject) => {
+      fetch({
+        url,
+        method: "post",
+        data,
+      })
+        .then((res) => {
+          reslove(res);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
 }

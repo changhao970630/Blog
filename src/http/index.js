@@ -1,9 +1,10 @@
 import axios from "axios";
 import { getToken } from "../tools/common";
-import store from "../store";
 
-// const host = "http://212.64.75.109/";
-const host = "http://localhost:3000";
+let host =
+  process.env.NODE_ENV == "development"
+    ? "http://127.0.0.1:3000"
+    : "http://quancundexiwang.wang";
 import { Message } from "element-ui";
 let fetch = axios.create({
   baseURL: host,
@@ -15,22 +16,6 @@ let fetch = axios.create({
 
 fetch.interceptors.request.use(
   (config) => {
-    const userInfo = JSON.parse(localStorage.getItem("user_info"));
-    let user_id;
-    try {
-      user_id = store.state.user.USER_INFO.id
-        ? store.state.user.USER_INFO.id
-        : userInfo.id;
-    } catch (e) {
-      user_id = null;
-    }
-    if (user_id) {
-      switch (config.method) {
-        case "get": {
-          config.params.user_id = user_id;
-        }
-      }
-    }
     config.headers.Authorization = getToken();
     return config;
   },

@@ -1,5 +1,8 @@
 // let host = "http://212.64.75.109/";
-let host = "http://127.0.0.1:3000";
+let host =
+  process.env.NODE_ENV == "development"
+    ? "http://127.0.0.1:3000"
+    : "http://quancundexiwang.wang";
 
 const apiUrl = {
   //登录！
@@ -13,7 +16,7 @@ const apiUrl = {
   //所有用户公共文章！
   public_essaies: "/public/essays",
   //图片文件上传
-  files: host + "upload_img",
+  imageFile: host + "/upload/image",
 };
 
 export default apiUrl;

@@ -1,10 +1,13 @@
 <template>
   <div id="user_menu">
     <router-link :to="{name:'user_home'}" tag="div" id="user-menu-item" des="Hmi">
-      <i class="el-icon-menu"></i>
+      <i class="el-icon-s-home"></i>
     </router-link>
     <router-link :to="{name:'user_blog'}" tag="div" id="user-menu-item" des="Blog">
-      <i class="el-icon-s-order"></i>
+      <i class="el-icon-reading"></i>
+    </router-link>
+    <router-link :to="{name:'user_tags'}" tag="div" id="user-menu-item" des="Tags">
+      <i class="el-icon-s-grid"></i>
     </router-link>
     <router-link :to="{name:'user_photo'}" tag="div" id="user-menu-item" des="Ablum">
       <i class="el-icon-picture"></i>

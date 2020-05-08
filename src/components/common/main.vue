@@ -14,11 +14,8 @@
       <div id="container">
         <div id="left" class="aside"></div>
         <div id="middle" ref="middle">
-          <transition
-            mode="out-in"
-            enter-active-class="animated bounceIn"
-            leave-active-class="animated bounceOut"
-          >
+          <transition mode="out-in">
+            >
             <router-view></router-view>
           </transition>
         </div>
@@ -64,18 +61,18 @@ export default {
 </script>
 
 <style lang="less" scoped>
-// .v-enter-active,
-// .v-leave-active {
-//   //指就是html中fade名称
-//   transition: 0.8s ease;
-// }
-// .v-enter,
-// .v-leave-to {
-//   transform: translateX(-800px);
-// }
+.v-enter-active,
+.v-leave-active {
+  //指就是html中fade名称
+  transition: 0.5s ease;
+}
+.v-enter,
+.v-leave-to {
+  opacity: 0;
+}
 #container {
   width: 100%;
-  height: 100%;
+  height: calc(100% - 3rem);
   // background-image: url("https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=108969226,324366578&fm=26&gp=0.jpg");
   // box-sizing: 100% 100%;
   /*background-color: rgb(72, 109, 255);*/

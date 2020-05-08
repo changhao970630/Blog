@@ -1,27 +1,37 @@
 <template>
-  <div style="padding-bottom: 3rem">
-    <el-card v-for="(item,index) in data" :key="index" style="padding: 10px 0px" shadow="hover">
-      <div id="title">
-        <h4 @click="toDetails(item)">{{item.title}}</h4>
-      </div>
-      <div id="user">
-        <i class="el-icon-s-check"></i>
-        <span>{{item.essay_user.nickname}}</span>
-      </div>
-      <div id="des">
-        <p>{{item.remark}}</p>
-      </div>
-      <div id="more">
-        <div id="tag">
-          <el-tag
-            effect="dark"
-            :type="Math.random()*10>5?'primary':'danger'"
-            size="mini"
-          >{{item.essay_type.typeName}}</el-tag>
+  <div>
+    <div>
+      <el-card v-for="(item,index) in data" :key="index" style="padding: 10px 0px" shadow="hover">
+        <div id="title">
+          <h4 @click="toDetails(item)">{{item.title}}</h4>
+          <div v-if="userEditable">
+            <el-button size="mini" type="warning" circle>
+              <i class="el-icon-edit"></i>
+            </el-button>
+            <el-button size="mini" circle type="danger" @click="toogleEssayStatus(item)">
+              <i class="el-icon-delete"></i>
+            </el-button>
+          </div>
         </div>
-        <h5 @click="toDetails(item)">ReadMore</h5>
-      </div>
-    </el-card>
+        <div id="user">
+          <i class="el-icon-s-check"></i>
+          <span>{{item.essay_user.nickname}}</span>
+        </div>
+        <div id="des">
+          <p>{{item.remark}}</p>
+        </div>
+        <div id="more">
+          <div id="tag">
+            <el-tag
+              effect="dark"
+              :type="Math.random()*10>5?'primary':'danger'"
+              size="mini"
+            >{{item.essay_type.typeName}}</el-tag>
+          </div>
+          <h5 @click="toDetails(item)">ReadMore</h5>
+        </div>
+      </el-card>
+    </div>
     <pagination :pagination="pagination" @changPage="changPage"></pagination>
   </div>
 </template>
@@ -36,7 +46,11 @@ export default {
         return [];
       }
     },
-    pagination: {}
+    pagination: {},
+    userEditable: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     return {};
@@ -45,8 +59,26 @@ export default {
     toDetails(item) {
       this.$router.push({ name: "details", params: { id: item.id } });
     },
-    changPage(val) {
+    changPage(val = 1) {
       this.$emit("changPage", val);
+    },
+    toogleEssayStatus(item) {
+      this.c_confirm({
+        props: {
+          title: "确定删除这篇文章嘛？"
+        }
+      })
+        .then(async () => {
+          const deleteRes = await this.rq.fetchDelete(
+            this.apiUrl.essay + `/${item.id}`
+          );
+          console.log(deleteRes);
+          this.$emit("changPage", 1);
+        })
+        .catch(() => {
+          console.log(2);
+        });
+      console.log(item);
     }
   }
 };
@@ -55,9 +87,14 @@ export default {
 <style lang="less" scoped>
 #title {
   //标题
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   h4 {
     display: inline-block;
     cursor: pointer;
+    width: 50%;
+    overflow: hidden;
   }
   h4:hover {
     color: #ffa422;
@@ -85,7 +122,6 @@ export default {
   margin: 10px;
   h5 {
     background-color: #d1de69;
-    display: inline-block;
     padding: 0.33rem;
     border-radius: 8%;
     cursor: pointer;

@@ -50,6 +50,15 @@ const routes = [
               title: "个人博客",
             },
           },
+          // user_tags
+          {
+            path: "user_tags",
+            component: () => import("../views/profile-page/user_tags"),
+            name: "user_tags",
+            meta: {
+              title: "个人博客",
+            },
+          },
           {
             path: "user_photo",
             component: () => import("../views/profile-page/photo_page"),

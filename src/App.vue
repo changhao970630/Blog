@@ -1,9 +1,8 @@
 <template>
   <div id="app">
     <transition name="el-fade-in-linear" mode="out-in">
-    <router-view />
+      <router-view />
     </transition>
-
   </div>
 </template>
 
@@ -12,12 +11,25 @@
   padding: 0;
   margin: 0;
 }
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Gill Sans", sans-serif;
+}
 html,
 body {
   width: 100%;
   height: 100%;
-  background-color: rgb(255, 255, 255);
-  font-family: "lucida grande", "lucida sans unicode", lucida, helvetica,
-    "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  min-width: 300px;
+  font-size: 20px;
+  overflow: hidden;
 }
+body::-webkit-scrollbar {
+  width: 0px;
+  background-image: linear-gradient(transparent, red);
+}
+#app {
+  height: 100%;
+}
+@headerBgc: rgb(49, 21, 105);
 </style>
