@@ -5,7 +5,7 @@
         <div id="title">
           <h4 @click="toDetails(item)">{{item.title}}</h4>
           <div v-if="userEditable">
-            <el-button size="mini" type="warning" circle>
+            <el-button size="mini" type="warning" circle @click="editEssay(item)">
               <i class="el-icon-edit"></i>
             </el-button>
             <el-button size="mini" circle type="danger" @click="toogleEssayStatus(item)">
@@ -73,12 +73,18 @@ export default {
             this.apiUrl.essay + `/${item.id}`
           );
           console.log(deleteRes);
-          this.$emit("changPage", 1);
+          if (deleteRes.id) {
+            this.$emit("changPage", this.pagination.current_page);
+            this.$message.success("删除成功！");
+          }
         })
         .catch(() => {
           console.log(2);
         });
       console.log(item);
+    },
+    editEssay(item) {
+      this.$router.push({ name: "edit", params: { id: item.id } });
     }
   }
 };

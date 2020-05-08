@@ -1,14 +1,14 @@
 import Vue from "vue";
 import c_confirm from "./confirm.vue"; //当组件hejs文件名称一样一定要加后缀
 
-let C_confirm = Vue.extend(c_confirm); // 构造函数
+let C_Confirm = Vue.extend(c_confirm); // 构造函数
 const c_confirm_vm = (options) => {
   if (typeof options == "string") {
     options = {
       message: options,
     };
   }
-  const vm = new C_confirm({
+  const vm = new C_Confirm({
     data: options.data,
     propsData: options.props,
     methods: {
@@ -18,7 +18,7 @@ const c_confirm_vm = (options) => {
     },
   });
   let currentMsg;
-  C_confirm.prototype.callback = function(action) {
+  C_Confirm.prototype.callback = function(action) {
     if (action === "confirm") {
       currentMsg.reslove("confirm");
     }

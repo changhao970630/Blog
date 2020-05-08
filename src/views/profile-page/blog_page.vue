@@ -25,13 +25,10 @@ export default {
   methods: {
     async getUserBlogs(page = 1, status = 1) {
       const bgRes = await this.rq.fetchGet(this.apiUrl.essay, { page, status });
-      console.log(bgRes);
       this.data = bgRes.data;
       this.pagination = bgRes.meta.pagination;
     },
     changPage(val) {
-      console.log(val);
-
       this.getUserBlogs(val);
     }
   },

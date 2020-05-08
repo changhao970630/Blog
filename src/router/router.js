@@ -76,8 +76,14 @@ const routes = [
       {
         path: "blog",
         component: () => import("../views/profile-page/new_essay"),
-        meta: { title: "博客" },
+        meta: { title: "添加博客" },
         name: "blog",
+      },
+      {
+        path: "edit/:id",
+        component: () => import("../views/profile-page/new_essay"),
+        meta: { title: "编辑博客" },
+        name: "edit",
       },
       {
         path: "about",

@@ -1,5 +1,5 @@
 <template>
-  <div style="padding:20px">
+  <div style="padding:20px;" v-if="reload">
     <div>
       <el-form label-position="top">
         <el-row>
@@ -39,7 +39,15 @@
           </el-col>
           <el-col>
             <el-form-item>
-              <el-button type="primary" @click="submitNewEssay">提交</el-button>
+              <div style="position:fixed;right:50px;bottom:0">
+                <el-button
+                  type="danger"
+                  @click="submitEditEssay"
+                  v-if="$route.params.id"
+                  size="mini"
+                >确定修改</el-button>
+                <el-button type="primary" @click="submitNewEssay" v-else size="mini">提交</el-button>
+              </div>
             </el-form-item>
           </el-col>
         </el-row>
@@ -50,10 +58,12 @@
 
 <script>
 import axios from "axios";
+import TurndownService from "turndown";
 export default {
   name: "newEassy",
   data() {
     return {
+      reload: true,
       toolbars: {
         bold: true, // 粗体
         italic: true, // 斜体
@@ -111,6 +121,11 @@ export default {
       }
     }
   },
+  watch: {
+    $route() {
+      location.reload();
+    }
+  },
   methods: {
     async getUserTypes() {
       const userTypes = await this.rq.fetchGet(this.apiUrl.types, { all: 1 });
@@ -128,6 +143,22 @@ export default {
       );
       if (newEssayRes.id) {
         this.$message.success("文章创建成功！");
+      }
+    },
+    async submitEditEssay() {
+      console.log(this.essay_info);
+      const editInfo = {
+        id: this.essay_info.id,
+        title: this.essay_info.title,
+        remark: this.essay_info.remark,
+        type_id: this.essay_info.type_id,
+        content: this.essay_info.content
+      };
+      const editRes = await this.rq.fetchPut(this.apiUrl.essay, editInfo);
+      console.log(editRes);
+      if (editRes.id) {
+        this.$message.success("修改成功");
+        this.$router.go(-1);
       }
     },
     getBlobBydataURI(urlData) {
@@ -164,10 +195,22 @@ export default {
       }).then(response => {
         console.log(response);
       });
+    },
+    async getEssayDetails(id) {
+      const res = await this.rq.fetchGet(this.apiUrl.essay + `/${id}`, {});
+      console.log(res);
+      const turndownService = new TurndownService();
+      const markdown = turndownService.turndown(res.content);
+      this.essay_info = res;
+      this.temporary_value = markdown;
     }
   },
   created() {
     this.getUserTypes();
+    if (this.$route.params.id) {
+      console.log(this.$route.params.id);
+      this.getEssayDetails(this.$route.params.id);
+    }
   }
 };
 </script>
