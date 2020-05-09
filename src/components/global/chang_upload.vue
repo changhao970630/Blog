@@ -4,24 +4,19 @@
       :show-file-list="false"
       class="upload-demo"
       :data="data"
-      drag
-      :action="apiUrl.files"
+      :action="imgAction"
       :on-success="uploadCoverSuccess"
       :on-error="uploadCoverError"
+      name="file"
     >
       <div>
-        <i class="el-icon-upload"></i>
-        <div class="el-upload__text">
-          将文件拖到此处，或
-          <em>点击上传</em>
-        </div>
+        <img width="150px" height="150px" :src="echoFileUrl" alt />
       </div>
     </el-upload>
   </div>
 </template>
 
 <script>
-import apiUrl from "../../http/apiUrl";
 export default {
   name: "chang_upload",
   props: {
@@ -29,14 +24,28 @@ export default {
       type: Object,
       default() {
         return {
-          sign: "default",
-          apiUrl: apiUrl
+          sign: "default"
         };
       }
+    },
+    echoFileUrl: {
+      type: String,
+      default: ""
+    }
+  },
+  data() {
+    return {
+      action: "http://localhost:3000/upload/image"
+    };
+  },
+  computed: {
+    imgAction() {
+      return this.apiUrl.imageFile;
     }
   },
   methods: {
     uploadCoverSuccess(res) {
+      console.log(res);
       this.$emit("uploadRes", res);
     },
     uploadCoverError(err) {
@@ -47,5 +56,12 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
+.upload-demo {
+  overflow: hidden;
+  img {
+    border: 1px solid darkcyan;
+    border-radius: 50%;
+  }
+}
 </style>

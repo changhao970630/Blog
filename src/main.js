@@ -27,6 +27,7 @@ Vue.prototype.rq = rq;
 Vue.prototype.apiUrl = apiUrl;
 Vue.use(ElementUI);
 Vue.config.productionTip = false;
+
 new Vue({
   router,
   store,

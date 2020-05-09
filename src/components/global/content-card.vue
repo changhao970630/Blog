@@ -78,10 +78,7 @@ export default {
             this.$message.success("删除成功！");
           }
         })
-        .catch(() => {
-          console.log(2);
-        });
-      console.log(item);
+        .catch(() => {});
     },
     editEssay(item) {
       this.$router.push({ name: "edit", params: { id: item.id } });

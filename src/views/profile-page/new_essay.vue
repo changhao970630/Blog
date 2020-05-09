@@ -39,7 +39,7 @@
           </el-col>
           <el-col>
             <el-form-item>
-              <div style="position:fixed;right:50px;bottom:0">
+              <div style="float:right">
                 <el-button
                   type="danger"
                   @click="submitEditEssay"

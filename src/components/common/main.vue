@@ -5,11 +5,11 @@
     </nav>
     <content>
       <transition
-        enter-active-class="animated rotateIn"
-        leave-active-class="animated rotateOut"
+        enter-active-class="animated fadeInLeft"
+        leave-active-class="animated fadeOutLeft"
         mode="out-in"
       >
-        <modalMenu v-if="showSpanMenu"></modalMenu>
+        <modalMenu v-if="isCollapse"></modalMenu>
       </transition>
       <div id="container">
         <div id="left" class="aside"></div>
@@ -32,8 +32,7 @@ import modalMenu from "./modalMenu";
 export default {
   data() {
     return {
-      mode: "horizontal",
-      showSpanMenu: false
+      mode: "horizontal"
     };
   },
   components: {
@@ -43,6 +42,14 @@ export default {
   computed: {
     current_path() {
       return this.$route.meta.title;
+    },
+    isCollapse() {
+      return this.$store.state.isCollapse;
+    }
+  },
+  watch: {
+    $route() {
+      this.$store.commit("toogleCollapse", false);
     }
   },
   //   mounted() {
@@ -83,6 +90,7 @@ export default {
   #middle {
     width: 80%;
     overflow-y: scroll;
+    background-color: rgba(255, 255, 255, 0.924);
   }
 
   #middle::-webkit-scrollbar {

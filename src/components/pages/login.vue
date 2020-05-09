@@ -14,7 +14,7 @@
             </el-col>
             <el-col>
               <el-form-item label="密码：" prop="password">
-                <el-input v-model="login_info.password"></el-input>
+                <el-input v-model="login_info.password" type="password"></el-input>
               </el-form-item>
             </el-col>
             <el-col>
@@ -39,8 +39,8 @@ export default {
     return {
       title: "CODE HAPPIER BLOG OS",
       login_info: {
-        email: "ch@admin.com",
-        password: "1"
+        email: "test@admin.com",
+        password: "qwer1234"
       },
       rules: {
         email: [{ required: true, message: "请输入邮箱地址！" }],
@@ -86,7 +86,7 @@ export default {
   justify-content: center;
   #login {
     transition: 0.7s ease;
-    width: 45%;
+    width: 40%;
     box-shadow: 3px 3px 13px rgb(51, 30, 124);
     border-radius: 16px;
     h4 {
@@ -96,7 +96,7 @@ export default {
   }
   @media screen and (max-width: 560px) {
     #login {
-      width: 100%;
+      width: 85%;
     }
   }
 }

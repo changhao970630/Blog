@@ -2,10 +2,14 @@
   <div id="user-profile">
     <div id="wrap">
       <div id="base-info">
+        <!-- <el-button @click="editTest">修改测试</el-button> -->
         <div id="setting" @click="goSetting">
           <i class="el-icon-setting"></i>
         </div>
-        <img id="avatar" :src="userInfo.avatar" alt width="100" height="100" />
+        <!-- <img id="avatar" :src="userInfo.avatar" alt width="100" height="100" /> -->
+        <div id="avatar">
+          <chang_upload :echoFileUrl="userInfo.avatar" @uploadRes="uploadRes"></chang_upload>
+        </div>
         <h3 id="nickname">{{userInfo.nickname}}</h3>
         <h4 id="email">{{userInfo.email}}</h4>
         <h6>享受生活，珍惜时间！</h6>
@@ -78,6 +82,25 @@ export default {
       this.$once("hook:beforeDestroy", () => {
         clearInterval(timer);
       });
+    },
+    editTest() {},
+    async uploadRes(res) {
+      const updateProfile = await this.rq.fetchPut(
+        this.apiUrl.user_base_profile,
+        {
+          id: this.userInfo.id,
+          avatar: res.filepath,
+          nickname: this.userInfo.nickname
+        }
+      );
+      console.log(updateProfile);
+      if (updateProfile.id) {
+        this.$message.success("更换头像成功！");
+        let t = JSON.parse(localStorage.getItem("user_info"));
+        t.avatar = res.filepath;
+        localStorage.setItem("user_info", JSON.stringify(t));
+        location.reload();
+      }
     }
   },
   created() {

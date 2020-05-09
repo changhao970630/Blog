@@ -1,5 +1,10 @@
 <template>
-  <div style="height:100%;text-align:left;display:flex;justify-content:center;align-items:center;">
+  <div style="height:100%;text-align:left;">
+    <el-card style="margin:10px">
+      <p>测试账户</p>
+      <p>email:test@admin.com</p>
+      <p>password:qwer1234</p>
+    </el-card>
     <div style="box-shadow:0px 0px 10px darkcyan;padding:20px">
       <h1 style="color:deeppink">About this website!</h1>
       <h3 style="color:darkcyan">前端</h3>

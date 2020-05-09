@@ -1,27 +1,27 @@
 <template>
   <div id="collapseMenu">
-    <label for="menu" @click="toogleMenu" :class="{notCollapse:toogleShow}">
+    <label for="menu" @click="toogleCollapse" :class="{notCollapse:isCollapse}">
       <span></span>
       <span></span>
       <span></span>
     </label>
-    <input type="checkbox" name="id" id="menu" v-model="toogleShow" style="display: none" />
   </div>
 </template>
 
 <script>
-import $bus from "../../tools/bus";
-
 export default {
   data() {
-    return {
-      toogleShow: false
-    };
+    return {};
   },
+  computed: {
+    isCollapse() {
+      return this.$store.state.isCollapse;
+    }
+  },
+
   methods: {
-    toogleMenu() {
-      this.toogleShow = !this.toogleShow;
-      $bus.$emit("toogleMenuEmit", this.toogleShow);
+    toogleCollapse() {
+      this.$store.commit("toogleCollapse", !this.isCollapse);
     }
   }
 };

@@ -4,7 +4,7 @@ import { getToken } from "../tools/common";
 let host =
   process.env.NODE_ENV == "development"
     ? "http://127.0.0.1:3000"
-    : "http://quancundexiwang.wang";
+    : "http://212.64.75.109/";
 import { Message } from "element-ui";
 let fetch = axios.create({
   baseURL: host,

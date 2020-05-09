@@ -1,12 +1,16 @@
 // let host = "http://212.64.75.109/";
 let host =
   process.env.NODE_ENV == "development"
-    ? "http://127.0.0.1:3000"
-    : "http://quancundexiwang.wang";
+    ? "http://127.0.0.1:3000/"
+    : "http://212.64.75.109/";
 
 const apiUrl = {
   //登录！
-  login: host + "/login",
+  login: host + "login",
+
+  // 用户基础信息修改
+
+  user_base_profile: "/user/update/",
 
   // 类型列表,类型添加
   types: "types",
@@ -14,9 +18,9 @@ const apiUrl = {
   //文章列表，文章添加,文章详情
   essay: "essay",
   //所有用户公共文章！
-  public_essaies: "/public/essays",
+  public_essaies: "public/essays",
   //图片文件上传
-  imageFile: host + "/upload/image",
+  imageFile: host + "upload/image",
 };
 
 export default apiUrl;

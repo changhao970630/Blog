@@ -9,7 +9,8 @@ module.exports = {
   outputDir: "dist",
   // 放置生成的静态资源 (js、css、img、fonts) 的目录(相对于outputDir目录)。
   // 默认值''
-  assetsDir: "assets",
+  // assetsDir: "production" ? "./assetsDir" : "assetsDir",
+  productionSourceMap: false,
   //指定生成的 index.html 的输出路径 (相对于 outputDir)。也可以是一个绝对路径。
   // 默认值'index.html'
   indexPath: "index.html",

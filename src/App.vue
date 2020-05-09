@@ -23,6 +23,7 @@ body {
   min-width: 300px;
   font-size: 20px;
   overflow: hidden;
+  background-size: 100% 100%;
 }
 body::-webkit-scrollbar {
   width: 0px;

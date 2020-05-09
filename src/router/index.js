@@ -8,7 +8,13 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes,
 });
-
+const routerPush = VueRouter.prototype.push;
+VueRouter.prototype.push = function push(location) {
+  return routerPush.call(this, location).catch((error) => {
+    error;
+    Message.info("正在浏览当前页面喔！");
+  });
+};
 router.beforeEach((to, form, next) => {
   // console.log(to.name);
   let TOKEN = getToken();
