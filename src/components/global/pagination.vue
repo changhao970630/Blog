@@ -2,7 +2,7 @@
   <div id="pagination">
     <el-card>
       <el-pagination
-        background
+        small
         layout="total,prev, pager, next,jumper"
         :total="pagination.total"
         @current-change="handleChangPage"

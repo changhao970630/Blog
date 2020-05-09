@@ -11,11 +11,6 @@ const c_confirm_vm = (options) => {
   const vm = new C_Confirm({
     data: options.data,
     propsData: options.props,
-    methods: {
-      confrim(val) {
-        console.log(val);
-      },
-    },
   });
   let currentMsg;
   C_Confirm.prototype.callback = function(action) {

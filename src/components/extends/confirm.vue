@@ -1,7 +1,7 @@
 <template>
   <transition name="el-fade-in-linear" mode="out-in">
     <div class="c_confirm" v-show="visible">
-      <div id="modal" @click="close_modal"></div>
+      <c_modal @modalColse="modalColse"></c_modal>
       <div id="content">
         <header>
           <h6>
@@ -66,7 +66,7 @@ export default {
         }
       }, this.duration);
     },
-    close_modal() {
+    modalColse() {
       this.$el.parentNode.removeChild(this.$el);
     },
     sureMessage() {
@@ -92,14 +92,6 @@ export default {
   justify-content: center;
   align-items: center;
   color: white;
-  #modal {
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.425);
-    position: absolute;
-    z-index: 1;
-  }
-
   #content {
     width: 20rem;
     background-color: rgb(42, 97, 176);

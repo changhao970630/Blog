@@ -42,7 +42,7 @@ export default {
   display: flex;
   justify-content: space-around;
   box-shadow: 2px 6px 12px rgb(41, 41, 104);
-  background-color: rgb(49, 21, 105);
+  background-color: rgb(69, 45, 134);
   /*position: fixed;*/
   /*top: 0;*/
   z-index: 999;

@@ -85,21 +85,26 @@ export default {
     },
     editTest() {},
     async uploadRes(res) {
+      const newAvatar =
+        process.env.NODE_ENV == "development"
+          ? res.filepath_local
+          : res.filepath_online;
+      console.log(newAvatar);
       const updateProfile = await this.rq.fetchPut(
         this.apiUrl.user_base_profile,
         {
           id: this.userInfo.id,
-          avatar: res.filepath,
+          avatar: newAvatar,
           nickname: this.userInfo.nickname
         }
       );
       console.log(updateProfile);
       if (updateProfile.id) {
-        this.$message.success("更换头像成功！");
         let t = JSON.parse(localStorage.getItem("user_info"));
-        t.avatar = res.filepath;
+        t.avatar = newAvatar;
         localStorage.setItem("user_info", JSON.stringify(t));
         location.reload();
+        this.$message.success("更换头像成功！");
       }
     }
   },

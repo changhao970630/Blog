@@ -34,6 +34,7 @@ export default {
     return {
       routes: [
         { name: "home", title: "最近文章" },
+        { name: "blog", title: "添加文章" },
         { name: "contact", title: "联系我" },
         { name: "about", title: "关于" }
       ]

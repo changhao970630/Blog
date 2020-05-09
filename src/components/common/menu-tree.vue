@@ -89,7 +89,7 @@ export default {
     }
   }
   #menu-item:hover {
-    color: sandybrown;
+    color: rgb(6, 17, 51);
   }
   .router-link-exact-active {
     color: yellow;

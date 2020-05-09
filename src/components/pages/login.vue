@@ -36,12 +36,19 @@ import { mapActions } from "vuex";
 export default {
   name: "login",
   data() {
+    console.log(process.env.NODE_ENV);
+    const testUser = {
+      email: "ch@admin.com",
+      password: "1"
+    };
+    const onlineUser = {
+      email: "test@admin.com",
+      password: "qwer1234"
+    };
+    const user = process.env.NODE_ENV == "development" ? testUser : onlineUser;
     return {
       title: "CODE HAPPIER BLOG OS",
-      login_info: {
-        email: "test@admin.com",
-        password: "qwer1234"
-      },
+      login_info: user,
       rules: {
         email: [{ required: true, message: "请输入邮箱地址！" }],
         password: [{ required: true, message: "请输入密码！" }]

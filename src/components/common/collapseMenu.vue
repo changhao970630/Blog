@@ -29,8 +29,6 @@ export default {
 
 <style lang="less" scoped>
 #collapseMenu {
-  box-shadow: 2px 2px 16px rgb(53, 53, 109);
-
   span {
     display: block;
     width: 2rem;

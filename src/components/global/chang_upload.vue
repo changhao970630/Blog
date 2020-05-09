@@ -34,9 +34,7 @@ export default {
     }
   },
   data() {
-    return {
-      action: "http://localhost:3000/upload/image"
-    };
+    return {};
   },
   computed: {
     imgAction() {
