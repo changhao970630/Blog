@@ -1,18 +1,19 @@
 <template>
-  <div id="prompt">
-    <c_modal></c_modal>
-
-    <div id="content">
-      <div id="header" style="color:white">{{title}}</div>
-      <div style="padding:10px">
-        <el-input v-model="content"></el-input>
-      </div>
-      <div style="color:white;display:flex;justify-content:flex-end;font-size:0.8rem;">
-        <p style="margin:10px" @click="cancleContent">取消</p>
-        <p style="margin:10px" @click="sureContent">确定</p>
+  <transition name="el-fade-in-linear" mode="out-in">
+    <div id="prompt">
+      <c_modal @modalColse="modalColse"></c_modal>
+      <div id="content">
+        <div id="header" style="color:white;margin-top:10px">{{title}}</div>
+        <div style="padding:10px">
+          <el-input v-model="content"></el-input>
+        </div>
+        <div style="color:white;display:flex;justify-content:flex-end;font-size:0.8rem;">
+          <p style="margin:10px" @click="cancleContent">取消</p>
+          <p style="margin:10px" @click="sureContent">确定</p>
+        </div>
       </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -26,7 +27,8 @@ export default {
   },
   data() {
     return {
-      content: ""
+      content: "",
+      visiable: false
     };
   },
   methods: {
@@ -36,6 +38,9 @@ export default {
     sureContent() {
       this.callBack("confirm", this.content);
       this.$el.parentNode.removeChild(this.$el);
+    },
+    modalColse() {
+      this.remove(this.$el);
     }
   }
 };

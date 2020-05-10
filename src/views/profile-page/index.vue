@@ -8,12 +8,12 @@
         </div>
         <!-- <img id="avatar" :src="userInfo.avatar" alt width="100" height="100" /> -->
         <div id="avatar">
-          <chang_upload :echoFileUrl="userInfo.avatar" @uploadRes="uploadRes"></chang_upload>
+          <chang_upload :echoFileUrl="userInfo.avatar" @uploadRes="uploadRes" width="130px"></chang_upload>
         </div>
         <h3 id="nickname">{{userInfo.nickname}}</h3>
         <h4 id="email">{{userInfo.email}}</h4>
         <h6>享受生活，珍惜时间！</h6>
-        <tags></tags>
+        <!-- <tags></tags> -->
         <div id="time">{{current_time}}</div>
       </div>
       <div id="user-content">
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import tags from "./components/tags";
+// import tags from "./components/tags";
 import user_menu from "./components/user_menu";
 export default {
   name: "user-profile",
@@ -43,8 +43,8 @@ export default {
     };
   },
   components: {
-    user_menu,
-    tags
+    user_menu
+    // tags
   },
   computed: {
     userInfo() {
@@ -130,13 +130,14 @@ export default {
       display: flex;
       transition: 0.66s ease;
       flex-direction: column;
-      box-shadow: -0px -0px 13px rgb(156, 130, 223);
+      box-shadow: -0px -0px 13px rgb(234, 232, 238);
     }
 
     #base-info {
       width: 28%;
+      height: calc(100% - 3rem);
       border-radius: 18px 0px 0px 18px;
-      background-image: linear-gradient(129deg, #402993, #bcf847);
+      background-image: linear-gradient(129deg, deeppink, #caa1a1);
       text-align: center;
       color: white;
       justify-content: center;
@@ -157,7 +158,7 @@ export default {
       }
       #setting:hover {
         animation-duration: 2s;
-        box-shadow: inset 2px 2px 22px rgb(227, 106, 106);
+        box-shadow: inset 2px 2px 10px rgb(227, 106, 106);
       }
       @keyframes route {
         from {
@@ -193,7 +194,7 @@ export default {
       padding: 30px;
       box-sizing: border-box;
       border-radius: 0px 30px 30px 0px;
-
+      height: calc(100% - 3rem);
       overflow-y: scroll;
     }
     #user-content::-webkit-scrollbar {

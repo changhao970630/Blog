@@ -2,7 +2,6 @@ import Vue from "vue";
 import c_prompt from "./prompt.vue";
 const c_promptContruct = Vue.extend(c_prompt);
 const c_prompt_fn = (options) => {
-  console.log(options);
   if (typeof options === "string") {
     options = {
       title: options,
@@ -23,11 +22,10 @@ const c_prompt_fn = (options) => {
     propsData: options.props,
   });
   vm.callBack = callBack;
-  console.log(vm);
   vm.$mount();
   document.body.append(vm.$el);
-  vm.remove = () => {
-    document.body.remove(vm.$el);
+  vm.remove = (el) => {
+    document.body.removeChild(el);
   };
   return new Promise((reslove, reject) => {
     savePromis = {

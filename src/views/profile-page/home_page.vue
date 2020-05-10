@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div>
+    <p>~~么有想好放什么</p>
+  </div>
 </template>
 
 <script>

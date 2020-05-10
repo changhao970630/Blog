@@ -94,7 +94,7 @@ export default {
   color: white;
   #content {
     width: 20rem;
-    background-color: rgb(42, 97, 176);
+    background-color: rgb(145, 116, 123);
     height: 6rem;
     min-width: 200px;
     min-height: 100px;

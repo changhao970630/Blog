@@ -10,7 +10,7 @@
       name="file"
     >
       <div>
-        <img width="150px" height="150px" :src="echoFileUrl" alt />
+        <img :width="width" :height="width" :src="echoFileUrl" alt />
       </div>
     </el-upload>
   </div>
@@ -31,6 +31,10 @@ export default {
     echoFileUrl: {
       type: String,
       default: ""
+    },
+    width: {
+      type: String,
+      default: "150px"
     }
   },
   data() {

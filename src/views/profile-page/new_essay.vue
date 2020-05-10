@@ -1,17 +1,17 @@
 <template>
   <div style="padding:20px;" v-if="reload">
     <div>
-      <el-form label-position="top">
+      <el-form label-position="top" :model="essay_info" :rules="rules" ref="essay_info">
         <el-row>
           <el-col :xs="24" :sm="12" :md="8">
-            <el-form-item label="文章标题">
+            <el-form-item label="文章标题" prop="title">
               <el-input v-model="essay_info.title"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :xs="24" :sm="12" :md="8">
-            <el-form-item label="选择类型-若需要添加类型，请跳转到个人中心添加!-">
+            <el-form-item label="选择类型-若需要添加类型，请跳转到个人中心添加!-" prop="type_id">
               <el-select v-model="essay_info.type_id" style="width:100%">
                 <el-option
                   v-for="(item,index) in userTypes"
@@ -23,12 +23,12 @@
             </el-form-item>
           </el-col>
           <el-col>
-            <el-form-item label="简介">
+            <el-form-item label="简介" prop="remark">
               <el-input type="textarea" max="200" v-model="essay_info.remark"></el-input>
             </el-form-item>
           </el-col>
           <el-col>
-            <el-form-item label="正文">
+            <el-form-item label="正文" prop="content">
               <mavon-editor
                 :toolbars="toolbars"
                 @change="contentInput"
@@ -42,11 +42,16 @@
               <div style="float:right">
                 <el-button
                   type="danger"
-                  @click="submitEditEssay"
+                  @click="submitEditEssay('essay_info')"
                   v-if="$route.params.id"
                   size="mini"
                 >确定修改</el-button>
-                <el-button type="primary" @click="submitNewEssay" v-else size="mini">提交</el-button>
+                <el-button
+                  type="primary"
+                  @click="submitNewEssay('essay_info')"
+                  v-else
+                  size="mini"
+                >提交</el-button>
               </div>
             </el-form-item>
           </el-col>
@@ -107,6 +112,12 @@ export default {
         content: "",
         type_id: "",
         user_id: ""
+      },
+      rules: {
+        title: [{ required: true, message: "请填写标题！" }],
+        type_id: [{ required: true, message: "请填写文章类型！" }],
+        remark: [{ required: true, message: "请填写简介！" }],
+        content: [{ required: true, message: "请填写内容！" }]
       }
     };
   },
@@ -135,15 +146,19 @@ export default {
     contentInput(val, render) {
       this.essay_info.content = render;
     },
-    async submitNewEssay() {
-      this.essay_info.user_id = this.userProfile.id;
-      const newEssayRes = await this.rq.fetchPost(
-        this.apiUrl.essay,
-        this.essay_info
-      );
-      if (newEssayRes.id) {
-        this.$message.success("文章创建成功！");
-      }
+    submitNewEssay(name) {
+      this.$refs[name].validate(async done => {
+        if (done) {
+          this.essay_info.user_id = this.userProfile.id;
+          const newEssayRes = await this.rq.fetchPost(
+            this.apiUrl.essay,
+            this.essay_info
+          );
+          if (newEssayRes.id) {
+            this.$message.success("文章创建成功！");
+          }
+        }
+      });
     },
     async submitEditEssay() {
       console.log(this.essay_info);

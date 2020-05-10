@@ -27,15 +27,15 @@ export default {};
   }
 }
 #user_menu {
-  background-image: linear-gradient(-58deg, #b9bfc1, #6981d8);
-  border-radius: 28px;
+  background-image: linear-gradient(-58deg, #e48b51, #6981d8);
+  border-radius: 20px;
   margin: 10px;
-  padding: 20px;
+  padding: 15px;
   color: rgb(255, 255, 255);
   #user-menu-item {
     position: relative;
     margin: 10px 0px;
-    padding: 20px;
+    padding: 15px;
     cursor: pointer;
   }
   //   #user-menu-item:hover + #user-menu-item::before {

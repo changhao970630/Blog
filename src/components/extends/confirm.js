@@ -22,7 +22,6 @@ const c_confirm_vm = (options) => {
   vm.$mount();
   document.body.append(vm.$el);
   vm.visible = true;
-
   return new Promise((reslove, reject) => {
     currentMsg = {
       reslove,

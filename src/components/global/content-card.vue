@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>
+    <div v-if="data.length>0">
       <el-card v-for="(item,index) in data" :key="index" style="padding: 10px 0px" shadow="hover">
         <div id="title">
           <h4 @click="toDetails(item)">{{item.title}}</h4>
@@ -32,6 +32,9 @@
         </div>
       </el-card>
     </div>
+    <el-card v-else>
+      <h3>啊呜O(∩_∩)O~好像没有数据呀~.....</h3>
+    </el-card>
     <pagination :pagination="pagination" @changPage="changPage"></pagination>
   </div>
 </template>

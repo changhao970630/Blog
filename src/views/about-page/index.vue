@@ -15,14 +15,8 @@
       </el-tab-pane>
       <el-tab-pane label="个人介绍">定时任务补偿</el-tab-pane>
     </el-tabs>
-    <!-- <el-card style="margin:10px">
-      <p>测试账户</p>
-      <p>email:test@admin.com</p>
-      <p>password:qwer1234</p>
-    </el-card>-->
   </div>
 </template>
-
 <script>
 import webTec from "./webTec";
 export default {

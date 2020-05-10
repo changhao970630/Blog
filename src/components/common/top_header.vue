@@ -1,7 +1,7 @@
 <template>
   <div id="topMenu">
     <div id="left">
-      <p>CodeHappier</p>
+      <p @click="home">CodeHappier</p>
     </div>
     <div id="menu">
       <the-menu></the-menu>
@@ -28,28 +28,37 @@ export default {
     userProfile
   },
 
-  methods: {},
+  methods: {
+    home() {
+      this.$router.push({ name: "home" });
+    }
+  },
   created() {}
 };
 </script>
 
 <style lang="less" scoped>
-@height: 3rem;
+@height: 3em;
 #topMenu {
   width: 100%;
   height: @height;
   line-height: @height;
   display: flex;
   justify-content: space-around;
-  box-shadow: 2px 6px 12px rgb(41, 41, 104);
-  background-color: rgb(69, 45, 134);
+  box-shadow: 2px 1px 12px rgb(214, 129, 129);
+  background-color: deeppink;
   /*position: fixed;*/
   /*top: 0;*/
   z-index: 999;
   #left {
     p {
-      font-size: 1.2rem;
+      font-size: 1rem;
       color: #fff;
+      cursor: pointer;
+      transition: 2s ease-out;
+    }
+    p:hover {
+      transform: scale(1.2);
     }
   }
   #collapseMenu {
@@ -76,6 +85,7 @@ export default {
     }
     #topMenu {
       justify-content: space-between;
+      height: 2rem;
     }
   }
 }

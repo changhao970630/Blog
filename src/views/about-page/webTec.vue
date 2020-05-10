@@ -1,9 +1,9 @@
 <template>
   <div id="wrap">
     <div id="content" style>
+
       <h1 style="color:deeppink">About this website!</h1>
       <h3 style="color:darkcyan">前端</h3>
-
       <p>
         1.
         <b>HTML5</b> 语义化标签,

@@ -74,7 +74,7 @@ export default {
     text-align: center;
     transition: 0.5s ease;
     border-radius: 12px;
-    color: gray;
+    color: rgb(255, 255, 255);
     .show {
       width: 100%;
       position: absolute;
@@ -89,7 +89,7 @@ export default {
     }
   }
   #menu-item:hover {
-    color: rgb(6, 17, 51);
+    color: rgb(192, 212, 103);
   }
   .router-link-exact-active {
     color: yellow;

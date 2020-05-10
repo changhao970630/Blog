@@ -12,7 +12,10 @@ const routerPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push(location) {
   return routerPush.call(this, location).catch((error) => {
     error;
-    Message.info("正在浏览当前页面喔！");
+    Message.info({
+      message: "Visiting~~",
+      duration: 600,
+    });
   });
 };
 router.beforeEach((to, form, next) => {

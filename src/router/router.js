@@ -60,6 +60,14 @@ const routes = [
             },
           },
           {
+            path: "user_add_tags",
+            component: () => import("../views/profile-page/add_tags"),
+            name: "user_add_tags",
+            meta: {
+              title: "个人相册",
+            },
+          },
+          {
             path: "user_photo",
             component: () => import("../views/profile-page/photo_page"),
             name: "user_photo",
