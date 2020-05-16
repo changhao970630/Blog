@@ -37,15 +37,16 @@ export default {
   name: "login",
   data() {
     console.log(process.env.NODE_ENV);
-    const testUser = {
-      email: "ch@admin.com",
-      password: "1"
-    };
+    // const testUser = {
+    //   email: "ch@admin.com",
+    //   password: "1"
+    // };
     const onlineUser = {
       email: "test@admin.com",
       password: "qwer1234"
     };
-    const user = process.env.NODE_ENV == "development" ? testUser : onlineUser;
+    // const user = process.env.NODE_ENV == "development" ? testUser : onlineUser;
+    const user = onlineUser;
     return {
       title: "CODE HAPPIER BLOG OS",
       login_info: user,
@@ -61,7 +62,6 @@ export default {
       this.$refs[name].validate(async done => {
         if (done) {
           let loginres = await login(this.login_info);
-
           if (!loginres.data.token) {
             this.$message.error("邮箱或密码错误！");
           } else {

@@ -1,34 +1,8 @@
 <template>
   <div id="wrap">
     <div id="content" style>
-
-      <h1 style="color:deeppink">About this website!</h1>
-      <h3 style="color:darkcyan">前端</h3>
-      <p>
-        1.
-        <b>HTML5</b> 语义化标签,
-        <b>CSS3</b>
-        动画
-      </p>
-      <p>
-        <ul>
-            2.<b>Vue全家桶</b>
-            <li style="margin:0px 30px;color:darkred">Vuex数据状态管理 VueRouter Axios</li>
-            <li style="margin:0px 30px;color:darkred">VueRouter,组件渲染，路由守卫控制权限</li>
-            <li style="margin:0px 30px;color:darkred">使用Axios进行Http服务器数据交互</li>
-        </ul>
-      </p>
-      <p>3.Vue-cli 4.x 脚手架,webpack4.0配置基本项目开发环境</p>
-          <hr/>
-
-      <h3 style="color:darkcyan">后端</h3>
-
-      <p>1.本网站后端使用NodeJs Koa框架搭建网站服务器</p>
-      <p>2.使用Mysql数据持久化</p>
-      <p>3.ORM:Sequlize</p>
-                  <hr>
-
-      <h3>开发进度</h3>
+       <h1 style="color:deeppink">About this website!</h1>
+       <h4>开发进度</h4>
       <ul style="list-style:decimal;color:darkcyan;margin:20px">
         <h4>前端:</h4>
         <li>完成多用户的登录，公共发布文章查看区域</li>
@@ -46,6 +20,7 @@
           <b>本地存储localstorage</b> 强制刷新
           <b>待优化优化</b>
         </li>
+        <li>完成用户根据自己的标签访问自己的属于这个标签的所有文章！</li>
       </ul>
       <ul style="list-style:decimal;color:darkcyan;margin:20px">
         <h4>后端:</h4>
@@ -60,6 +35,46 @@
         <li>完成用户文章标签增删改查接口！用户操作权限验证！</li>
         <li>完成音频，图片，视频上传接口！</li>
       </ul>
+     
+      <h4>技术栈</h4>
+      <h4 style="color:darkcyan">前端</h4>
+      <p>
+        1.
+        <b>HTML5</b> 语义化标签,
+        <b>CSS3</b>
+        动画
+      </p>
+      <p>
+        <ul>
+            2.<b>Vue全家桶</b>
+            <li style="margin:0px 30px;color:darkred">Vuex数据状态管理 VueRouter Axios</li>
+            <li style="margin:0px 30px;color:darkred">VueRouter,组件渲染，路由守卫控制权限</li>
+            <li style="margin:0px 30px;color:darkred">使用Axios进行Http服务器数据交互</li>
+        </ul>
+      </p>
+      <p>3.Vue-cli 4.x 脚手架,webpack4.0配置基本项目开发环境</p>
+          <hr/>
+
+      <h4 style="color:darkcyan">后端</h4>
+
+      <p>1.本网站后端使用NodeJs Koa框架搭建网站服务器</p>
+      <p>2.使用Mysql数据持久化</p>
+      <p>3.ORM:Sequlize</p>
+                  <hr>
+      <div>
+      <p>
+        这是一个
+        <b>多用户</b>的动态博客系统！
+      </p>
+    </div>
+    <ul>
+      <li>用户注册登录后,可以创建自己 <b>文章的标签分类</b>，</li>
+      <li>可以<b>添加,查看，修改，删除</b>属于用户自己的文章！</li>
+      <li>可以<b>添加,查看，修改，删除</b>属于用户自己的标签类型！</li>
+      <li>用户可以修改头像！那些其他个人信息的修改后端接口已经完成！前端还没有放出！</li>
+      <li>所有的数据删除都是改变状态不会做真正的删除，便于失误操作数据找回！</li>
+      <li>因为本着想自己使用的目的，以后会继续完善！仅仅是自己学习使用！</li>
+    </ul>
     </div>
   </div>
 </template>
@@ -71,7 +86,7 @@ export default {};
 <style lang="less" scoped>
 #wrap {
   #content {
-    height: calc(100vh - 4rem);
+    height: calc(100vh - 5rem);
     overflow: scroll;
     b {
       color: red;

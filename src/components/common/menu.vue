@@ -27,7 +27,7 @@ export default {
           meta: { name: "blog" }
         },
         {
-          title: "关于",
+          title: "网站&简历",
           icon: "el-icon-warning",
           meta: { name: "about" }
         },

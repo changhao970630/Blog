@@ -137,7 +137,7 @@ export default {
       width: 28%;
       height: calc(100% - 3rem);
       border-radius: 18px 0px 0px 18px;
-      background-image: linear-gradient(129deg, deeppink, #caa1a1);
+      background-image: linear-gradient(129deg, rgb(57, 13, 98), #caa1a1);
       text-align: center;
       color: white;
       justify-content: center;
@@ -170,7 +170,6 @@ export default {
       }
       #avatar {
         border-radius: 50%;
-        border: 2px solid white;
         animation: routing 6s linear infinite;
       }
       @keyframes routing {

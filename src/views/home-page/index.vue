@@ -1,7 +1,12 @@
 <template>
   <div id="home">
     <div id="wrap">
-      <content-card :data="data" :pagination="pagination" @changPage="changPage"></content-card>
+      <content-card
+        :data="data"
+        :pagination="pagination"
+        :load_data="load_data"
+        @changPage="changPage"
+      ></content-card>
     </div>
   </div>
 </template>
@@ -13,17 +18,20 @@ export default {
     return {
       msg: "一个不知道放什么的首页",
       data: [],
-      pagination: {}
+      pagination: {},
+      load_data: false
     };
   },
   methods: {
     async getPublicEssaies(page = 1, status = 1) {
+      this.load_data = true;
       const publicEssaies = await this.rq.fetchGet(this.apiUrl.public_essaies, {
         page,
         status
       });
       this.data = publicEssaies.data;
       this.pagination = publicEssaies.meta.pagination;
+      this.load_data = false;
     },
     changPage(val) {
       this.getPublicEssaies(val);

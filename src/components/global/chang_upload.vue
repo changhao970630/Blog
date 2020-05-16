@@ -62,8 +62,8 @@ export default {
 .upload-demo {
   overflow: hidden;
   img {
-    border: 1px solid darkcyan;
     border-radius: 50%;
+    border: 3px seashell solid;
   }
 }
 </style>

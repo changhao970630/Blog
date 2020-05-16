@@ -80,7 +80,7 @@ export default {
 #container {
   width: 100%;
   height: calc(100% - 3rem);
-  // background-image: url("https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=108969226,324366578&fm=26&gp=0.jpg");
+  background-image: url("../../assets/bgc.jpg");
   // box-sizing: 100% 100%;
   /*background-color: rgb(72, 109, 255);*/
   //   background-color: rgb(115, 145, 202);
@@ -90,7 +90,7 @@ export default {
   #middle {
     width: 80%;
     overflow-y: scroll;
-    background-color: rgba(255, 255, 255, 0.924);
+    background-color: rgba(255, 255, 255, 0.944);
   }
 
   #middle::-webkit-scrollbar {

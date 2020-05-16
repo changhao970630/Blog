@@ -14,7 +14,7 @@ const routes = [
       {
         path: "home",
         component: () => import("../views/home-page"),
-        meta: { title: "首页" },
+        meta: { title: "Coding Happier" },
         name: "home",
       },
       //user_info

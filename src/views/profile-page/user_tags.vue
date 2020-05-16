@@ -1,5 +1,5 @@
 <template>
-  <div id="user_tags">
+  <div id="user_tags" v-loading="load_tags">
     <div style="display:flex;justify-content:space-between;align-items:center">
       <h6>我的文章标签</h6>
       <el-button type="text" size="small" round @click="addTags">
@@ -40,14 +40,17 @@ export default {
   data() {
     return {
       tags: [],
-      pagination: {}
+      pagination: {},
+      load_tags: false
     };
   },
   methods: {
     async getUserTags(page = 1) {
+      this.load_tags = true;
       const tags = await this.rq.fetchGet(this.apiUrl.types, { page });
       this.tags = tags.data;
       this.pagination = tags.meta.pagination;
+      this.load_tags = false;
     },
     toogleTagStatus(item) {
       this.c_confirm({
@@ -77,8 +80,11 @@ export default {
             typeName: res,
             remark: item.remark
           });
-          console.log(editRES);
           if (editRES.id) {
+            this.$message.success({
+              message: "修改成功",
+              duration: 888
+            });
             this.getUserTags(this.pagination.current_page);
           } else {
             this.$message.warning({

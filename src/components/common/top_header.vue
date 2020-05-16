@@ -1,7 +1,7 @@
 <template>
   <div id="topMenu">
     <div id="left">
-      <p @click="home">CodeHappier</p>
+      <p @click="home">Coding Happier</p>
     </div>
     <div id="menu">
       <the-menu></the-menu>
@@ -46,7 +46,7 @@ export default {
   display: flex;
   justify-content: space-around;
   box-shadow: 2px 1px 12px rgb(214, 129, 129);
-  background-color: deeppink;
+  background-image: linear-gradient(-90deg, #2c4987, #363033);
   /*position: fixed;*/
   /*top: 0;*/
   z-index: 999;

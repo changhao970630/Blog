@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div v-loading="load_data" id="content-card">
     <div v-if="data.length>0">
-      <el-card v-for="(item,index) in data" :key="index" style="padding: 10px 0px" shadow="hover">
+      <el-card v-for="(item,index) in data" :key="index" style="padding: 10px 0px;" shadow="hover">
         <div id="title">
           <h4 @click="toDetails(item)">{{item.title}}</h4>
           <div v-if="userEditable">
@@ -53,6 +53,10 @@ export default {
     userEditable: {
       type: Boolean,
       default: false
+    },
+    load_data: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -78,7 +82,10 @@ export default {
           console.log(deleteRes);
           if (deleteRes.id) {
             this.$emit("changPage", this.pagination.current_page);
-            this.$message.success("删除成功！");
+            this.$message.success({
+              message: "删除成功！",
+              duration: 888
+            });
           }
         })
         .catch(() => {});
@@ -91,55 +98,58 @@ export default {
 </script>
 
 <style lang="less" scoped>
-#title {
-  //标题
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  h4 {
-    display: inline-block;
-    cursor: pointer;
-    width: 50%;
-    overflow: hidden;
+#content-card {
+  opacity: 0.88;
+  #title {
+    //标题
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h4 {
+      display: inline-block;
+      cursor: pointer;
+      width: 50%;
+      overflow: hidden;
+    }
+    h4:hover {
+      color: #ffa422;
+      text-decoration: underline;
+    }
   }
-  h4:hover {
-    color: #ffa422;
-    text-decoration: underline;
+  #user {
+    color: deeppink;
+    margin: 10px 0px;
   }
-}
-#user {
-  color: deeppink;
-  margin: 10px 0px;
-}
-#des {
-  //简介
-  p {
-    font-size: 0.8rem;
-    max-height: 80px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+  #des {
+    //简介
+    p {
+      font-size: 0.8rem;
+      max-height: 80px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
   }
-}
 
-#more {
-  margin: 10px;
-  h5 {
-    background-color: #d1de69;
-    padding: 0.33rem;
-    border-radius: 8%;
-    cursor: pointer;
-    transition: 0.3s;
-    float: right;
-  }
-  #tag {
-    float: left;
-  }
-  h5:hover {
-    background-color: cadetblue;
-    color: white;
+  #more {
+    margin: 10px;
+    h5 {
+      background-color: #d1de69;
+      padding: 0.33rem;
+      border-radius: 8%;
+      cursor: pointer;
+      transition: 0.3s;
+      float: right;
+    }
+    #tag {
+      float: left;
+    }
+    h5:hover {
+      background-color: cadetblue;
+      color: white;
+    }
   }
 }
 </style>

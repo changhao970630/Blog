@@ -29,6 +29,7 @@ fetch.interceptors.response.use(
     return Promise.resolve(response.data);
   },
   (error) => {
+    Message.error("服务器或网络错误，请检查网络！");
     return Promise.reject(error);
   }
 );

@@ -2,7 +2,7 @@
   <div id="userProfile">
     <div v-if="!userProfile">
       <el-button type="text" @click="goLogin">登录</el-button>
-      <el-button type="text">注册</el-button>
+      <el-button type="text" @click="register">注册</el-button>
     </div>
     <div v-else>
       <img width="30px" height="30px" :src="userProfile.avatar" alt />
@@ -40,6 +40,12 @@ export default {
     },
     goLogin() {
       this.$router.push({ name: "login" });
+    },
+    register() {
+      this.$message.info({
+        message: "暂未开放注册！需要个人测试账号的请联系我！或者使用测试账号！",
+        duration: 2000
+      });
     }
   }
 };

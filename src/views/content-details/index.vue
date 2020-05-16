@@ -1,17 +1,8 @@
 <template>
   <div style="padding:10px">
-    <!-- <el-button type="text">
-      <h4>A</h4>
-    </el-button>
-    <el-button type="text">
-      <h2>A</h2>
-    </el-button>
-    <el-button type="text">
-      <h1>A</h1>
-    </el-button>
-    <h2 v-html="data.title"></h2>
-    <div></div>-->
-    <article class="markdown-body" v-html="data.content" v-highlight></article>
+    <div v-loading="load_essay">
+      <article class="markdown-body" v-html="data.content" v-highlight></article>
+    </div>
   </div>
 </template>
 
@@ -21,16 +12,19 @@ export default {
   name: "contentDetails",
   data() {
     return {
-      data: {}
+      data: {},
+      load_essay: false
     };
   },
   methods: {
     async getEssayDetails(id) {
+      this.load_essay = true;
       const essayDetails = await this.rq.fetchGet(
         this.apiUrl.essay + `/${id}`,
         {}
       );
       this.data = essayDetails;
+      this.load_essay = false;
     }
   },
   created() {

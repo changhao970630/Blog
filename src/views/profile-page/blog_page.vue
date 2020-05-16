@@ -17,6 +17,7 @@
       :userEditable="userEditable"
       :pagination="pagination"
       @changPage="changPage"
+      :load_data="load_data"
     ></content-card>
   </div>
 </template>
@@ -29,11 +30,13 @@ export default {
       data: [],
       pagination: {},
       userEditable: true,
-      tags: []
+      tags: [],
+      load_data: false
     };
   },
   methods: {
     async getUserBlogs(page = 1, status = 1, type_id) {
+      this.load_data = true;
       const bgRes = await this.rq.fetchGet(this.apiUrl.essay, {
         page,
         status,
@@ -41,6 +44,7 @@ export default {
       });
       this.data = bgRes.data;
       this.pagination = bgRes.meta.pagination;
+      this.load_data = false;
     },
     async getUserTags(all = 1) {
       const tags = await this.rq.fetchGet(this.apiUrl.types, { all });
@@ -50,7 +54,6 @@ export default {
       this.getUserBlogs(val);
     },
     typeEssay(item) {
-      console.log(item);
       this.getUserBlogs(1, 1, item.id);
     }
   },

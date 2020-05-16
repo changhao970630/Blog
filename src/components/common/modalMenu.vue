@@ -1,5 +1,6 @@
 <template>
   <div id="modalMenu">
+    <h6 style="color:gray">移动端该界面暂不支持更改头像喔！后面会加上的</h6>
     <div id="userProfile">
       <div v-if="userProfile">
         <div id="avatar">
