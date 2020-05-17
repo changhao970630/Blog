@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.f7baec9a8ec575606cd653bd9f809d32.js"
+  "precache-manifest.d4cb11ed34c7b299cd434b25a53d95c5.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "backmanger"});
